@@ -1,0 +1,114 @@
+#include <stdio.h>
+
+int main() {
+    float pop1, pop2, area1, area2, pib1, pib2;
+    int pontos1, pontos2;
+    float dens1, dens2, ppc1, ppc2, super1, super2;
+    int atr1, atr2;
+    float valor1a1, valor1a2, valor2a1, valor2a2;
+
+    // Entrada de dados - Pais 1
+    printf("Digite a populacao do Pais 1: ");
+    scanf("%f", &pop1);
+    printf("Digite a area do Pais 1: ");
+    scanf("%f", &area1);
+    printf("Digite o PIB do Pais 1: ");
+    scanf("%f", &pib1);
+    printf("Digite a quantidade de pontos turisticos do Pais 1: ");
+    scanf(" %d", &pontos1);
+
+    // Entrada de dados - Pais 2
+    printf("\nDigite a populacao do Pais 2: ");
+    scanf("%f", &pop2);
+    printf("Digite a area do Pais 2: ");
+    scanf("%f", &area2);
+    printf("Digite o PIB do Pais 2: ");
+    scanf("%f", &pib2);
+    printf("Digite a quantidade de pontos turisticos do Pais 2: ");
+    scanf(" %d", &pontos2);
+
+    // Cálculos
+    dens1 = pop1 / area1;
+    dens2 = pop2 / area2;
+    ppc1 = pib1 / pop1;
+    ppc2 = pib2 / pop2;
+    super1 = pop1 + area1 + pib1 + pontos1 + ppc1 + dens1;
+    super2 = pop2 + area2 + pib2 + pontos2 + ppc2 + dens2;
+
+    // Menu de atributos
+    printf("\nEscolha dois atributos diferentes para comparar:\n");
+    printf("1 - Populacao\n");
+    printf("2 - Area\n");
+    printf("3 - Densidade demografica\n");
+    printf("4 - PIB\n");
+    printf("5 - Pontos turisticos\n");
+    printf("6 - PIB per capita\n");
+    printf("7 - Super poder do pais\n");
+
+    printf("Digite o primeiro atributo: ");
+    scanf(" %d", &atr1);
+    printf("Digite o segundo atributo: ");
+    scanf(" %d", &atr2);
+
+    if (atr1 == atr2) {
+        printf("Erro: Atributos devem ser diferentes.\n");
+        return 0;
+    }
+
+    // Atribuição dos valores
+    switch (atr1) {
+        case 1: valor1a1 = pop1; valor2a1 = pop2; break;
+        case 2: valor1a1 = area1; valor2a1 = area2; break;
+        case 3: valor1a1 = dens1; valor2a1 = dens2; break;
+        case 4: valor1a1 = pib1; valor2a1 = pib2; break;
+        case 5: valor1a1 = pontos1; valor2a1 = pontos2; break;
+        case 6: valor1a1 = ppc1; valor2a1 = ppc2; break;
+        case 7: valor1a1 = super1; valor2a1 = super2; break;
+        default: printf("Atributo invalido.\n"); return 0;
+    }
+
+    switch (atr2) {
+        case 1: valor1a2 = pop1; valor2a2 = pop2; break;
+        case 2: valor1a2 = area1; valor2a2 = area2; break;
+        case 3: valor1a2 = dens1; valor2a2 = dens2; break;
+        case 4: valor1a2 = pib1; valor2a2 = pib2; break;
+        case 5: valor1a2 = pontos1; valor2a2 = pontos2; break;
+        case 6: valor1a2 = ppc1; valor2a2 = ppc2; break;
+        case 7: valor1a2 = super1; valor2a2 = super2; break;
+        default: printf("Atributo invalido.\n"); return 0;
+    }
+
+    int pontosCidade1 = 0, pontosCidade2 = 0;
+
+    // Comparar o primeiro atributo
+    if (atr1 == 3) {
+        if (valor1a1 < valor2a1) pontospais1++;
+        else if (valor2a1 < valor1a1) pontospais2++;
+    } else {
+        if (valor1a1 > valor2a1) pontospais1++;
+        else if (valor2a1 > valor1a1) pontospais2++;
+    }
+
+    // Comparar o segundo atributo
+    if (atr2 == 3) {
+        if (valor1a2 < valor2a2) pontospais1++;
+        else if (valor2a2 < valor1a2) pontospais2++;
+    } else {
+        if (valor1a2 > valor2a2) pontospais1++;
+        else if (valor2a2 > valor1a2) pontospais2++;
+    }
+
+    // Resultado
+    printf("\nResultado:\n");
+    printf("Pais 1: %d ponto(s)\n", pontosPais1);
+    printf("Pais 2: %d ponto(s)\n", pontosPais2);
+
+    if (pontosCidade1 > pontosCidade2)
+        printf("O Pais 1 venceu!\n");
+    else if (pontosCidade2 > pontosCidade1)
+        printf("O Pais 2 venceu!\n");
+    else
+        printf("Empate!\n");
+
+    return 0;
+}
